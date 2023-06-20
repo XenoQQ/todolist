@@ -1,0 +1,62 @@
+.todoHeader {
+   
+    width: 100%;
+    height: 80px;
+    border-radius: 5px;
+    display: flex;
+    background-color: #3B3B3B;
+
+}
+
+.inputForm {
+    
+    border: none;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #202020;
+    outline: none;
+    color: #DFDFDF;
+    margin: 0;
+}
+
+
+.dropButton {
+    background-color: #3B3B3B;
+    width: 10%;
+    border-radius: 5px;
+    border: none;
+    transition: 1s, flex-basis 0.1s;
+}
+
+.dropButton:hover {
+    background-color: #323232;
+    transition: 0s;
+}
+
+.dropButton:active {
+    background-color: #282828;
+}
+
+.inputDone {
+    background-color: #3B3B3B;
+    width: 10%;
+    border-radius: 5px;
+    border: none;
+    transition: 1s, flex-basis 0.1s;
+}
+
+.inputDone:hover {
+    background-color: #323232;
+    transition: 0s;
+}
+
+.inputDone:active {
+    background-color: #282828;
+}
+
+form {
+    width: 80%;
+    padding: 0;
+    
+}
