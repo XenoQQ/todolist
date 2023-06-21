@@ -4,8 +4,6 @@ import Todoapp from './components/todoapp';
 function App() {
   return (
     <Todoapp />
-
-
   );
 };
 

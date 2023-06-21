@@ -7,10 +7,6 @@ import Todoheader from './todoheader';
 import Todosection from './todosection';
 import Todofooter from './todofooter';
 
-
-
-
-
 const Todoframe = () => {
     const [todo, setTodo] = useState('');
     const [todos, setTodos] = useState([]);
@@ -20,11 +16,7 @@ const Todoframe = () => {
             setTodos([...todos, todo]);
             setTodo('');
         }
-
-
-
     };
-
 
     return (
         <div className='todoapp'>
@@ -33,11 +25,6 @@ const Todoframe = () => {
             <Todoheader todo={todo} setTodo={setTodo} addTodo={addTodo}/>
             <Todosection />
             <Todofooter />
-
-
-
-
-
         </div>
     )
 };

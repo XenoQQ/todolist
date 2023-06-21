@@ -1,16 +1,9 @@
 import './styles/todoheader.css';
 
 const Todoheader = ({ todo, setTodo, addTodo}) => {
-
-    
-
-    
-
     return (
         <div className='todoHeader'>
             <button className='dropButton'>
-             
-
             </button>
             <form>
                 <input
