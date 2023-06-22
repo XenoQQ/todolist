@@ -22,8 +22,8 @@ const Todoframe = () => {
         <div className='todoapp'>
             <h1 className='title1'>To do list</h1>
             <h2 className='title2'>Digital deluxe edition</h2>
-            <Todoheader todo={todo} setTodo={setTodo} addTodo={addTodo}/>
-            <Todosection />
+            <Todoheader todo={todo} setTodo={setTodo} addTodo={addTodo} />
+            <Todosection list={todos}/>
             <Todofooter />
         </div>
     )
