@@ -11,15 +11,16 @@ const App = () => {
 
   const addTodo = () => {
     if (todo !== '') {
+      
       setTodos([...todos, todo]);
       setTodo('');
-      console.log(todos);
     }
+    console.log(todos);
   }
 
-  const deleteTodo = (dtodo) => {
+  const deleteTodo = (id) => {
     const newTodos = todos.filter((todo) => {
-      return todo !== dtodo;
+      return todo.id !== id;
     });
     setTodos(newTodos);
   }

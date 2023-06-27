@@ -1,0 +1,55 @@
+.list {
+    width: 100%;
+    padding: 0;
+}
+
+.list__line {
+    display: flex;
+    border: none; 
+    padding: 0;
+}
+
+.list__checkbox {
+    flex: 10%;
+}
+
+.list__text {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    flex: 80%;
+    height: 35px;
+    border-width: 1px;
+    border-color: #3B3B3B;
+    border-style: solid;  
+    border-radius: 5px;
+    background-color: #202020;
+    padding: 15px;
+    color: #DFDFDF;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #DFDFDF;
+    font-size: 25px;
+    list-style: none;
+    margin: auto;
+}
+
+
+.list__delete {
+    background-color: #3B3B3B;
+    flex: 10%;
+    border-radius: 5px;
+    border: none;
+    transition: 1s, flex-basis 0.1s;
+    height: 65px;
+
+}
+
+
+.list__delete:hover {
+    background-color: #323232;
+    transition: 0s;
+}
+
+.input__delete:active {
+    background-color: #282828;
+}
