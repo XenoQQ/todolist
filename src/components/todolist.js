@@ -6,12 +6,12 @@ const Todolist = ({ todos, deleteTodo }) => {
         <div>
             <ul className='list'>
                 {todos.map((todo, index) =>
-                    <div className='list__line' key={index} >
+                    <div className='list__line' key={uuidv4()} >
                         <input className='list__checkbox' type="checkbox" />
-                        <li className='list__text' id={uuidv4()}>
-                            {todo}
+                        <li className='list__text'>
+                            {todo.text}
                         </li>
-                        <button className='list__delete' onClick={() => { deleteTodo(todo.id); }}>
+                        <button className='list__delete' onClick={() => { deleteTodo(index); }}>
                             Delete
                         </button>
                     </div>

@@ -6,21 +6,32 @@ import Todolist from './todolist';
 
 const App = () => {
 
-  const [todo, setTodo] = useState('');
+  const [todo, setTodo] = useState({
+    id: '',
+    text: '',
+    done: false
+  });
   const [todos, setTodos] = useState([]);
 
   const addTodo = () => {
-    if (todo !== '') {
-      
+    if (todo.text !== '') {
       setTodos([...todos, todo]);
-      setTodo('');
+      setTodo({
+        id: '',
+        text: '',
+        done: false
+      });
     }
     console.log(todos);
   }
 
+  const setDone = () => {
+    
+  }
+
   const deleteTodo = (id) => {
-    const newTodos = todos.filter((todo) => {
-      return todo.id !== id;
+    const newTodos = todos.filter((_, index) => {
+      return id !== index;
     });
     setTodos(newTodos);
   }
