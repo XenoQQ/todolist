@@ -16,13 +16,13 @@ const Todolist = ({ todos, setDone, deleteTodo }) => {
         <div>
             <h1>Undone</h1>
             <ul className='list'>
-                {getUndoneTodos().map((todo, index) =>
+                {getUndoneTodos().map((todo) =>
                     <div className='list__line' key={uuidv4()} >
-                        <input className='list__checkbox' type="checkbox" onChange={() => { setDone(index) }} />
+                        <input className='list__checkbox' type="checkbox" onChange={() => { setDone(todo.id) }} />
                         <li className='list__text'>
-                            {todo.text}
+                            {todo.text}, {todo.id}
                         </li>
-                        <button className='list__delete' onClick={() => { deleteTodo(index); }}>
+                        <button className='list__delete' onClick={() => { deleteTodo(todo.id); }}>
                             Delete
                         </button>
                     </div>
@@ -30,13 +30,13 @@ const Todolist = ({ todos, setDone, deleteTodo }) => {
             </ul>
             <h1>Done</h1>
             <ul className='list'>
-                {getDoneTodos().map((todo, index) =>
+                {getDoneTodos().map((todo) =>
                     <div className='list__line' key={uuidv4()} >
-                        <input className='list__checkbox' type="checkbox" onChange={() => { setDone(index) }} checked/>
+                        <input className='list__checkbox' type="checkbox" onChange={() => { setDone(todo.id) }} checked />
                         <li className='list__text'>
-                            {todo.text}
+                            {todo.text}, {todo.id}
                         </li>
-                        <button className='list__delete' onClick={() => { deleteTodo(index); }}>
+                        <button className='list__delete' onClick={() => { deleteTodo(todo.id); }}>
                             Delete
                         </button>
                     </div>

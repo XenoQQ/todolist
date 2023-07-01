@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import Todoinput from './todoinput';
 import Todolist from './todolist';
+import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
   const addTodo = (todo) => {
     if (todo !== '') {
       setTodos([...todos, {
+        id: uuidv4(),
         text: todo,
         done: false,
       }]);
@@ -19,10 +21,10 @@ const App = () => {
     console.log(todos);
   }
 
-  const setDone = (idx) => {
-    const updatedTodos = todos.map((todo, index) => {
-      if (index === idx) {
-        return {...todo, done: !todo.done}
+  const setDone = (targetId) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === targetId) {
+        return { ...todo, done: !todo.done }
       }
       return todo;
     })
@@ -32,9 +34,9 @@ const App = () => {
     console.log(todos);
   }
 
-  const deleteTodo = (idx) => {
-    const newTodos = todos.filter((_, index) => {
-      return idx !== index;
+  const deleteTodo = (targetId) => {
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== targetId;
     });
     setTodos(newTodos);
   }
