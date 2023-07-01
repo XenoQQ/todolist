@@ -1,19 +1,21 @@
 import './styles/todoinput.css';
-import {v4 as uuidv4} from 'uuid';
+import { useState } from 'react';
 
-const Todoinput = ({ todo, addTodo, setTodo }) => {
+const Todoinput = ({ addTodo }) => {
+    const [currentText, setCurrentText] = useState('');
+
     return (
         <div className='input'>
             <input
                 className='input__form'
                 placeholder='Got any plans? Write here!'
-                value={todo.text}
-                onChange={(e) => { setTodo({ id: uuidv4(), text: e.target.value, done: false }) }}
+                value={currentText}
+                onChange={(e) => { setCurrentText(e.target.value) }}
             />
 
-            <button className='input__button' onClick={addTodo} />
+            <button className='input__button' onClick={() => {addTodo(currentText); setCurrentText('')}} />
         </div>
     )
 }
 
-export default Todoinput
+export default Todoinput;

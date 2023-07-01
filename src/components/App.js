@@ -6,32 +6,35 @@ import Todolist from './todolist';
 
 const App = () => {
 
-  const [todo, setTodo] = useState({
-    id: '',
-    text: '',
-    done: false
-  });
+
   const [todos, setTodos] = useState([]);
 
-  const addTodo = () => {
-    if (todo.text !== '') {
-      setTodos([...todos, todo]);
-      setTodo({
-        id: '',
-        text: '',
-        done: false
-      });
+  const addTodo = (todo) => {
+    if (todo !== '') {
+      setTodos([...todos, {
+        text: todo,
+        done: false,
+      }]);
     }
     console.log(todos);
   }
 
-  const setDone = () => {
-    
+  const setDone = (idx) => {
+    const updatedTodos = todos.map((todo, index) => {
+      if (index === idx) {
+        return {...todo, done: !todo.done}
+      }
+      return todo;
+    })
+
+    setTodos(updatedTodos);
+
+    console.log(todos);
   }
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (idx) => {
     const newTodos = todos.filter((_, index) => {
-      return id !== index;
+      return idx !== index;
     });
     setTodos(newTodos);
   }
@@ -40,8 +43,8 @@ const App = () => {
     <div className='todoframe'>
       <h1 className='todoframe__title'>TODO APP</h1>
       <h2 className='todoframe__subtitle'>Digital Deluxe Edition</h2>
-      <Todoinput todo={todo} addTodo={addTodo} setTodo={setTodo} />
-      <Todolist todos={todos} deleteTodo={deleteTodo} />
+      <Todoinput addTodo={addTodo} />
+      <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} />
 
     </div>
   );
