@@ -3,24 +3,36 @@ body {
 }
 
 .todoframe {
-    
+    display: flex;
+    flex-direction: column;
     width: 600px;
-    height: 600px;
+    min-height: 600px;
     position: absolute;
-    top: 50%;
+    top: 30px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #202020;
+    transform: translate(-50%, 0);
+    padding: 10px;
     border-radius: 10px;
+    background-color: #202020;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #DFDFDF;
-    padding: 10px;
 }
 
 .todoframe__title {
-    text-align: center;
+    font-size: 40px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .todoframe__subtitle {
     text-align: center;
+    height: 25px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

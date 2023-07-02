@@ -1,6 +1,14 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    margin: 0;
+}
+
 .list {
     width: 100%;
     padding: 0;
+    margin: 0;
 }
 
 .list__line {
@@ -13,15 +21,18 @@
     flex: 10%;
 }
 
+.list__checkbox_done {
+    flex: 10%;
+    accent-color: green;
+}
+
 .list__text {
     display: flex;
     flex-direction: row;
     align-items: center; 
     flex: 80%;
     height: 35px;
-    border-width: 1px;
-    border-color: #3B3B3B;
-    border-style: solid;  
+    border: 1px solid #3B3B3B;
     border-radius: 5px;
     background-color: #202020;
     padding: 15px;
@@ -53,3 +64,9 @@
 .input__delete:active {
     background-color: #282828;
 }
+
+.list__text_done {
+    color: green;
+    text-decoration: line-through;
+}
+

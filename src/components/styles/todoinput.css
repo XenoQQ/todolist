@@ -1,24 +1,22 @@
 .input {
-    border: none;
     display: flex;
-
+    border: 1px solid orange;
+    height: 65px;
+    
 }
 
 .input__form { 
     flex: 90%;
     height: 35px;
-    border-width: 1px;
-    border-color: #3B3B3B;
-    border-style: solid;  
     border-radius: 5px;
+    border: 1px solid #3B3B3B;
     background-color: #202020;
     outline: none;
-    color: #DFDFDF;
-    margin: 0;
-    padding: 15px;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #DFDFDF;
     font-size: 25px;
+    margin: 0;
+    padding: 15px;
 }
 
 

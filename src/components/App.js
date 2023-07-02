@@ -1,9 +1,11 @@
 import './styles/App.css';
 import React from 'react';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Todoinput from './todoinput';
 import Todolist from './todolist';
-import { v4 as uuidv4 } from 'uuid';
+import Navbar from './navbar';
+
 
 const App = () => {
 
@@ -26,7 +28,7 @@ const App = () => {
       if (todo.id === targetId) {
         return { ...todo, done: !todo.done }
       }
-      return todo;
+      return todo; 
     })
 
     setTodos(updatedTodos);
@@ -44,9 +46,11 @@ const App = () => {
   return (
     <div className='todoframe'>
       <h1 className='todoframe__title'>TODO APP</h1>
-      <h2 className='todoframe__subtitle'>Digital Deluxe Edition</h2>
+      <p className='todoframe__subtitle'>Digital Deluxe Edition</p>
       <Todoinput addTodo={addTodo} />
+      <Navbar />
       <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} />
+      
 
     </div>
   );
