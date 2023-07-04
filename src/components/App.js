@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Todoinput from './todoinput';
 import Todolist from './todolist';
 import Navbar from './navbar';
+import Statusbar from './statusbar';
 
 
 const App = () => {
@@ -43,12 +44,14 @@ const App = () => {
     setTodos(newTodos);
   }
 
+
   return (
     <div className='todoframe'>
       <h1 className='todoframe__title'>TODO APP</h1>
       <p className='todoframe__subtitle'>Digital Deluxe Edition</p>
       <Todoinput addTodo={addTodo} />
       <Navbar />
+      <Statusbar />
       <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} />
       
 

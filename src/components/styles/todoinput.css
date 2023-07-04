@@ -1,28 +1,36 @@
 .input {
     display: flex;
-    border: 1px solid orange;
-    height: 65px;
+    align-items:center;
+    justify-content: space-between;
+    height: 55px;
+    margin: 5px 0 5px 0;
+    border-radius: 5px;
+    border: 1px solid #3B3B3B;
+    padding: 5px;
     
 }
 
 .input__form { 
-    flex: 90%;
-    height: 35px;
-    border-radius: 5px;
-    border: 1px solid #3B3B3B;
+    width: 515px;
+    height: 63px;
+
+    border: none;
     background-color: #202020;
     outline: none;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #DFDFDF;
     font-size: 25px;
-    margin: 0;
-    padding: 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 
 .input__button {
     background-color: #3B3B3B;
-    flex: 10%;
+    width: 55px;
+    height: 55px;
     border-radius: 5px;
     border: none;
     transition: 1s, flex-basis 0.1s;

@@ -1,7 +1,6 @@
 .listContainer {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
     margin: 0;
 }
 
@@ -13,46 +12,51 @@
 
 .list__line {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: none; 
     padding: 0;
+    border-radius: 5px;
+    border: 1px solid #3B3B3B;
+    margin-bottom: 5px;
+    padding: 5px;
+    height: 55px;
 }
 
 .list__checkbox {
-    flex: 10%;
+    height: 55px;
+    width: 55px;
+    color: #3B3B3B;
 }
 
 .list__checkbox_done {
-    flex: 10%;
-    accent-color: green;
+    width: 55px;
+    height: 55px;
+    accent-color: #3B3B3B;
 }
 
 .list__text {
     display: flex;
-    flex-direction: row;
-    align-items: center; 
-    flex: 80%;
-    height: 35px;
-    border: 1px solid #3B3B3B;
-    border-radius: 5px;
+    align-items: center;
+    width: 450px;
+    height: 63px;
+    padding-left: 15px;
     background-color: #202020;
-    padding: 15px;
     color: #DFDFDF;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #DFDFDF;
     font-size: 25px;
     list-style: none;
-    margin: auto;
 }
 
 
 .list__delete {
     background-color: #3B3B3B;
-    flex: 10%;
     border-radius: 5px;
     border: none;
     transition: 1s, flex-basis 0.1s;
-    height: 65px;
-
+    width: 55px;
+    height: 55px;
 }
 
 
@@ -66,7 +70,7 @@
 }
 
 .list__text_done {
-    color: green;
+    color: #3B3B3B;
     text-decoration: line-through;
 }
 

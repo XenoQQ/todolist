@@ -1,0 +1,11 @@
+.statusBarContainer {
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    justify-content: space-between;
+    margin: 0 0 5px 0;
+    border-radius: 5px;
+    border: 1px solid #3B3B3B;
+    padding: 5px;
+
+}
