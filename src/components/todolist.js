@@ -10,7 +10,7 @@ const Todolist = ({ todos, setDone, deleteTodo }) => {
     const getUndoneTodos = () => {
         return (todos.filter((todo) => !todo.done))
     }
- 
+
     return (
 
         <div>
@@ -41,11 +41,7 @@ const Todolist = ({ todos, setDone, deleteTodo }) => {
                         </div>
                     )}
                 </ul>
-
             </div>
-
-
-
         </div>
     )
 }

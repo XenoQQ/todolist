@@ -12,7 +12,6 @@ const Todoinput = ({ addTodo }) => {
                 value={currentText}
                 onChange={(e) => { setCurrentText(e.target.value) }}
             />
-
             <button className='input__button' onClick={() => { addTodo(currentText); setCurrentText('') }} />
         </div>
     )

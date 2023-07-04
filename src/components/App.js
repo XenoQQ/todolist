@@ -29,11 +29,10 @@ const App = () => {
       if (todo.id === targetId) {
         return { ...todo, done: !todo.done }
       }
-      return todo; 
+      return todo;
     })
 
     setTodos(updatedTodos);
-
     console.log(todos);
   }
 
@@ -44,17 +43,14 @@ const App = () => {
     setTodos(newTodos);
   }
 
-
   return (
     <div className='todoframe'>
       <h1 className='todoframe__title'>TODO APP</h1>
       <p className='todoframe__subtitle'>Digital Deluxe Edition</p>
       <Todoinput addTodo={addTodo} />
       <Navbar />
-      <Statusbar />
+      <Statusbar todos={todos} />
       <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} />
-      
-
     </div>
   );
 }
