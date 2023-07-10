@@ -12,6 +12,11 @@ const App = () => {
 
 
   const [todos, setTodos] = useState([]);
+  const [listStatus, setListStatus] = useState({
+    visibleAll: true,
+    vivibleDone: false,
+    visibleUndone: false,
+  });
 
   const addTodo = (todo) => {
     if (todo !== '') {
@@ -43,14 +48,21 @@ const App = () => {
     setTodos(newTodos);
   }
 
+  const deleteDoneTodos = () => {
+    const newTodos = todos.filter((todo) => {
+      return todo = !todo.done;
+    });
+    setTodos(newTodos);
+  }
+
   return (
     <div className='todoframe'>
       <h1 className='todoframe__title'>TODO APP</h1>
       <p className='todoframe__subtitle'>Digital Deluxe Edition</p>
       <Todoinput addTodo={addTodo} />
-      <Navbar />
+      <Navbar setListStatus={setListStatus} deleteDoneTodos={deleteDoneTodos} />
       <Statusbar todos={todos} />
-      <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} />
+      <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} listStatus={listStatus} />
     </div>
   );
 }

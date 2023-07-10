@@ -1,14 +1,18 @@
 import './styles/todolist.css';
 import { v4 as uuidv4 } from 'uuid';
 
-const Todolist = ({ todos, setDone, deleteTodo }) => {
+const Todolist = ({ todos, setDone, deleteTodo, listStatus }) => {
 
     const getDoneTodos = () => {
-        return (todos.filter((todo) => todo.done))
+        if (listStatus.visibleAll || listStatus.visibleDone) {
+            return (todos.filter((todo) => todo.done))
+        } else return [];
     }
 
     const getUndoneTodos = () => {
-        return (todos.filter((todo) => !todo.done))
+        if (listStatus.visibleAll || listStatus.visibleUndone) {
+            return (todos.filter((todo) => !todo.done))
+        } else return [];
     }
 
     return (
