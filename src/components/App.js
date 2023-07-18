@@ -22,8 +22,24 @@ const App = () => {
     if (todo !== '') {
       setTodos([...todos, {
         id: uuidv4(),
+        parentID: '',
         text: todo,
         done: false,
+        showSub: false,
+        isSub: false
+      }]);
+    }
+  }
+
+  const addSubTodo = (todo, id) => {
+    if (todo !== '') {
+      setTodos([...todos, {
+        id: uuidv4(),
+        parentID: id,
+        text: todo,
+        done: false,
+        showSub: false,
+        isSub: true
       }]);
     }
     console.log(todos);
@@ -38,7 +54,17 @@ const App = () => {
     })
 
     setTodos(updatedTodos);
-    console.log(todos);
+  }
+
+  const setShowSub = (targetId) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === targetId) {
+        return { ...todo, showSub: !todo.showSub }
+      }
+      return todo;
+    })
+
+    setTodos(updatedTodos);
   }
 
   const deleteTodo = (targetId) => {
@@ -62,7 +88,7 @@ const App = () => {
       <Todoinput addTodo={addTodo} />
       <Navbar setListStatus={setListStatus} deleteDoneTodos={deleteDoneTodos} />
       <Statusbar todos={todos} />
-      <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} listStatus={listStatus} />
+      <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} listStatus={listStatus} setShowSub={setShowSub} addSubTodo={addSubTodo} />
     </div>
   );
 }
