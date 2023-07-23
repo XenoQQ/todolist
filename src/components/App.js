@@ -5,11 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Todoinput from './todoinput';
 import Todolist from './todolist';
 import Navbar from './navbar';
-import Statusbar from './statusbar';
-
 
 const App = () => {
-
 
   const [todos, setTodos] = useState([]);
   const [listStatus, setListStatus] = useState({
@@ -85,10 +82,19 @@ const App = () => {
     <div className='todoframe'>
       <h1 className='todoframe__title'>TODO APP</h1>
       <p className='todoframe__subtitle'>Digital Deluxe Edition</p>
-      <Todoinput addTodo={addTodo} />
-      <Navbar setListStatus={setListStatus} deleteDoneTodos={deleteDoneTodos} />
-      <Statusbar todos={todos} />
-      <Todolist todos={todos} deleteTodo={deleteTodo} setDone={setDone} listStatus={listStatus} setShowSub={setShowSub} addSubTodo={addSubTodo} />
+      <Todoinput
+        addTodo={addTodo} />
+      <Navbar
+        setListStatus={setListStatus}
+        deleteDoneTodos={deleteDoneTodos}
+        todos={todos} />
+      <Todolist
+        todos={todos}
+        deleteTodo={deleteTodo}
+        setDone={setDone}
+        listStatus={listStatus}
+        setShowSub={setShowSub}
+        addSubTodo={addSubTodo} />
     </div>
   );
 }

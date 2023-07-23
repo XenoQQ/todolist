@@ -1,25 +1,23 @@
-.input {
+.subinput {
     display: flex;
     align-items:center;
     justify-content: space-between;
-    height: 55px;
+    height: 45px;
     margin: 5px 0 5px 0;
-    border-radius: 5px;
-    border: 1px solid #3B3B3B;
-    padding: 5px;
-    
+    border-bottom: 1px solid #3B3B3B;
+    border-top: 1px solid #3B3B3B;
+    padding: 5px 0 5px 0;
 }
 
-.input__form { 
-    width: 515px;
-    height: 63px;
-
+.subinput__form {
+    width: 100%; 
+    height: 40px;
     border: none;
     background-color: #202020;
     outline: none;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #DFDFDF;
-    font-size: 25px;
+    font-size: 20px;
     padding-left: 15px;
     display: flex;
     align-items: center;
@@ -27,20 +25,98 @@
 }
 
 
-.input__button {
+.subinput__button {
     background-color: #3B3B3B;
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     border-radius: 5px;
     border: none;
     transition: 1s, flex-basis 0.1s;
 }
 
-.input__button:hover {
+.subinput__button:hover {
     background-color: #323232;
     transition: 0s;
 }
 
-.input__button:active {
+.subinput__button:active {
     background-color: #282828;
+}
+
+.sublistContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%; 
+}
+
+.sublist {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-self: flex-end;
+}
+
+.sublist__line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none; 
+    padding: 0 0 5px 0;
+    border-bottom: 1px solid #3B3B3B;
+    margin-bottom: 5px;
+    height: 45px;
+}
+
+.sublist__checkbox {
+    margin: 0 0 0 15px;
+    height: 45px;
+    width: 45px;
+    color: #3B3B3B;
+}
+
+.sublist__checkbox_done {
+    width: 45px;
+    height: 45px;
+    accent-color: #3B3B3B;
+}
+
+.sublist__text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    background-color: #202020;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #757575;
+    font-size: 25px;
+    list-style: none;
+}
+
+.sublist__delete {
+    background-color: #3B3B3B;
+    border-radius: 5px;
+    border: none;
+    transition: 1s, flex-basis 0.1s;
+    width: 40px;
+    height: 40px;
+}
+
+.sublist__delete:hover {
+    background-color: #323232;
+    transition: 0s;
+}
+
+.subinput__delete:active {
+    background-color: #282828;
+}
+
+.sublist__text_done {
+    color: #3B3B3B;
+    text-decoration: line-through;
+}
+
+.sublist__dropdownmenucontainer {
+    height: 100%;
 }

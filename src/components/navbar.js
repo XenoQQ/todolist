@@ -1,8 +1,24 @@
 import './styles/navbar.css';
 
-const Navbar = ({ setListStatus, deleteDoneTodos }) => {
+const Navbar = ({ setListStatus, deleteDoneTodos, todos }) => {
 
+    const getUndoneTodos = () => {
+        let undoneTodos = todos.filter((todo) => !todo.isSub).filter((todo) => !todo.done).length;
+        if (undoneTodos === 0) {
+            return 'No undone todos';
+        } else {
+            return `Show ${undoneTodos} undone todos`;
+        }
+    }
 
+    const getDoneTodos = () => {
+        let doneTodos = todos.filter((todo) => !todo.isSub).filter((todo) => todo.done).length;
+        if (doneTodos === 0) {
+            return 'No done todos';
+        } else {
+            return `Show ${doneTodos} done todos`;
+        }
+    }
 
     return (
         <div className='navbarContainer'>
@@ -22,7 +38,7 @@ const Navbar = ({ setListStatus, deleteDoneTodos }) => {
                     visibleUndone: true,
                 })
             }}>
-                Show only undone
+                {getUndoneTodos()}
             </button>
             <button className='navbar__button' onClick={() => {
                 setListStatus({
@@ -31,15 +47,13 @@ const Navbar = ({ setListStatus, deleteDoneTodos }) => {
                     visibleUndone: false,
                 })
             }}>
-                Show only done
+                {getDoneTodos()}
             </button>
-            <button className='navbar__button navbar__button_delete' onClick={() => {
+            <button className='navbar__button' onClick={() => {
                 deleteDoneTodos()
             }}>
                 Delete all done
             </button>
-
-
         </div>
     );
 }

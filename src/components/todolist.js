@@ -1,8 +1,7 @@
 import './styles/todolist.css';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
 import Sublist from './sublist';
-
+import Dropdownmenu from './dropdown';
 
 const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTodo }) => {
 
@@ -19,58 +18,72 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
     }
 
     return (
-
         <div>
             <div className='listContainer'>
                 <ul className='list'>
-                    {getUndoneTodos().filter(todo => !todo.isSub).map((todo) =>
-                        <div className='list__line' key={uuidv4()} >
-                            <input className='list__checkbox' type="checkbox" onChange={() => { setDone(todo.id) }} />
-                            <li className='list__text'>
-                                {todo.text}
-                            </li>
-                            <button className='list__addsub' onClick={() => { setShowSub(todo.id) }}>
-                                Show sub
-                            </button>
-                            <button className='list__delete' onClick={() => { deleteTodo(todo.id); }}>
-                                Delete
-                            </button>
-                            {todo.showSub && <Sublist
-                                addSubTodo={addSubTodo}
-                                todoID={todo.id}
-                                getDoneTodos={getDoneTodos}
-                                getUndoneTodos={getUndoneTodos}
-                                deleteTodo={deleteTodo}
-                                setDone={setDone}
-                            />}
-                        </div>
-                    )}
+                    {getUndoneTodos()
+                        .filter(todo => !todo.isSub)
+                        .map((todo) =>
+                            <div className='list__itemcontainer'>
+                                <div className='list__line' key={uuidv4()} >
+                                    <input className='list__checkbox' type="checkbox" onChange={() => { setDone(todo.id) }} />
+                                    <li className='list__text'>
+                                        {todo.text}
+                                    </li>
+                                    <div className='list__dropdownmenucontainer'>
+                                        <Dropdownmenu
+                                            setShowSub={setShowSub}
+                                            deleteTodo={deleteTodo}
+                                            id={todo.id} />
+                                    </div>
+                                </div>
+                                <div className='list__sublistcontainer'>
+                                    {todo.showSub &&
+                                        <Sublist
+                                            addSubTodo={addSubTodo}
+                                            todoID={todo.id}
+                                            getDoneTodos={getDoneTodos}
+                                            getUndoneTodos={getUndoneTodos}
+                                            deleteTodo={deleteTodo}
+                                            setDone={setDone}
+                                            setShowSub={setShowSub}
+                                        />}
+                                </div>
+                            </div>
+                        )}
                 </ul>
                 <ul className='list'>
-                    {getDoneTodos().filter(todo => !todo.isSub).map((todo) =>
-                        <div className='list__line' key={uuidv4()} >
-                            <input className='list__checkbox list__checkbox_done' type="checkbox" onChange={() => { setDone(todo.id) }} checked />
-                            <li className='list__text list__text_done'>
-                                {todo.text}
-                            </li>
-                            <button className='list__addsub' onClick={() => { setShowSub(todo.id) }}>
-                                Show sub
-                            </button>
-                            <button className='list__delete' onClick={() => { deleteTodo(todo.id); }}>
-                                Delete
-                            </button>
-                            {todo.showSub && <Sublist
-                                addSubTodo={addSubTodo}
-                                todoID={todo.id}
-                                getDoneTodos={getDoneTodos}
-                                getUndoneTodos={getUndoneTodos}
-                                deleteTodo={deleteTodo}
-                                setDone={setDone}
-                            />}
+                    {getDoneTodos()
+                        .filter(todo => !todo.isSub)
+                        .map((todo) =>
+                            <div className='list__itemcontainer' key={uuidv4()}>
+                                <div className='list__line'  >
+                                    <input className='list__checkbox list__checkbox_done' type="checkbox" onChange={() => { setDone(todo.id) }} checked />
+                                    <li className='list__text list__text_done'>
+                                        {todo.text}
+                                    </li>
+                                    <div className='list__dropdownmenucontainer'>
+                                        <Dropdownmenu
+                                            setShowSub={setShowSub}
+                                            deleteTodo={deleteTodo}
+                                            id={todo.id} />
+                                    </div>
+                                </div>
+                                <div className='list__sublistcontainer'>
+                                    {todo.showSub &&
+                                        <Sublist
+                                            addSubTodo={addSubTodo}
+                                            todoID={todo.id}
+                                            getDoneTodos={getDoneTodos}
+                                            getUndoneTodos={getUndoneTodos}
+                                            deleteTodo={deleteTodo}
+                                            setDone={setDone}
+                                            setShowSub={setShowSub}
+                                        />}
 
-
-                        </div>
-                    )}
+                                </div>
+                            </div>
+                        )}
                 </ul>
             </div>
         </div>

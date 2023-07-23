@@ -2,102 +2,69 @@
     display: flex;
     flex-direction: column;
     margin: 0;
-    
+    padding: 0;
 }
 
 .list {
-    width: 100%;
     padding: 0;
     margin: 0;
 }
 
+.list__itemcontainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 45px;
+    margin: 0 0 5px 0;
+    padding: 5px;
+    border: 3px solid #3B3B3B; 
+    border-radius: 5px;
+}
+
 .list__line {
+    height: 45px;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: none; 
-    padding: 0;
-    border-radius: 5px;
-    border: 1px solid #3B3B3B;
-    margin-bottom: 5px;
-    padding: 5px;
-    min-height: 55px;
-    flex-wrap: wrap;
 }
 
 .list__checkbox {
-    height: 55px;
-    width: 55px;
-    color: #3B3B3B;
-
+    height: 45px;
+    width: 45px;
+    margin: 0 0 0 3px;
+    padding: 0;
 }
 
 .list__checkbox_done {
-    width: 55px;
-    height: 55px;
+    height: 45px;
+    width: 45px;
     accent-color: #3B3B3B;
 }
 
 .list__text {
     display: flex;
     align-items: center;
-    width: 390px;
-    height: 63px;
-    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 15px;
+    margin: 0;
     background-color: #202020;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #757575;
     font-size: 25px;
     list-style: none;
-
 }
 
-
-.list__delete {
-    background-color: #3B3B3B;
-    border-radius: 5px;
-    border: none;
-    transition: 1s, flex-basis 0.1s;
-    width: 55px;
-    height: 55px;
-
+.list__dropdownmenucontainer {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    bottom: 5px;
 }
 
-
-.list__delete:hover {
-    background-color: #323232;
-    transition: 0s;
+.list__sublistcontainer {
+    padding: 0;
+    margin: 0;
 }
-
-.input__delete:active {
-    background-color: #282828;
-}
-
-.list__text_done {
-    color: #3B3B3B;
-    text-decoration: line-through;
-}
-
-
-
-.list__addsub {
-    background-color: #3B3B3B;
-    border-radius: 5px;
-    border: none;
-    transition: 1s, flex-basis 0.1s;
-    width: 55px;
-    height: 55px;
-    margin-right: 5px;
-
-}
-
-
-.list__addsub:hover {
-    background-color: #323232;
-    transition: 0s;
-}
-
-.input__addsub:active {
-    background-color: #282828;
-}
-
