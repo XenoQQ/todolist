@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Dropdownmenu from './dropdown';
 
+
 const Sublist = ({ addSubTodo, todoID, getDoneTodos, getUndoneTodos, deleteTodo, setDone }) => {
     const [currentText, setCurrentText] = useState('');
 
@@ -16,7 +17,7 @@ const Sublist = ({ addSubTodo, todoID, getDoneTodos, getUndoneTodos, deleteTodo,
                     onChange={(e) => { setCurrentText(e.target.value) }}
                 />
                 <div className='sublist__dropdownmenucontainer'>
-                <button className='subinput__button' onClick={() => { addSubTodo(currentText, todoID); setCurrentText('') }} />
+                    <button className='subinput__button' onClick={() => { addSubTodo(currentText, todoID); setCurrentText('') }} />
                 </div>
             </div>
             <ul className='sublist'>
@@ -32,10 +33,10 @@ const Sublist = ({ addSubTodo, todoID, getDoneTodos, getUndoneTodos, deleteTodo,
                             <div className='sublist__dropdownmenucontainer'>
                                 <Dropdownmenu
                                     deleteTodo={deleteTodo}
-                                    id={todo.id} 
+                                    id={todo.id}
                                     isSub={true}
-                                    />
-                                    
+                                />
+
                             </div>
                         </div>
                     )}
@@ -53,7 +54,9 @@ const Sublist = ({ addSubTodo, todoID, getDoneTodos, getUndoneTodos, deleteTodo,
                             <div className='list__dropdownmenucontainer'>
                                 <Dropdownmenu
                                     deleteTodo={deleteTodo}
-                                    id={todo.id} />
+                                    id={todo.id}
+                                    isSub={true} />
+
                             </div>
                         </div>
                     )}
