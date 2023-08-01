@@ -2,31 +2,32 @@ import './styles/todolist.css';
 import { v4 as uuidv4 } from 'uuid';
 import Sublist from './sublist';
 import Dropdownmenu from './dropdown';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTodo }) => {
+const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTodo, updateTodo, handleInputDisplayed }) => {
 
     const getDoneTodos = () => {
         if (listStatus.visibleAll || listStatus.visibleDone) {
             return (todos.filter((todo) => todo.done))
         } else return [];
-    }
+    };
 
     const getUndoneTodos = () => {
         if (listStatus.visibleAll || listStatus.visibleUndone) {
             return (todos.filter((todo) => !todo.done))
         } else return [];
-    }
+    };
+    
+    
 
-   /* const divRef = useRef(null);
+    /*const divRef = useRef(null);
 
     useEffect(() => {
-        if (divRef.current) {
-            const divElement = divRef.current;
-            Unfade(divElement);
-        }
-    }, []);*/
-
+        const divElement = divRef.current;
+        Unfade(divElement);
+    })
+  */
+ 
     const Unfade = (element) => {
         var op = 0.1;
         element.style.display = 'flex';
@@ -52,28 +53,40 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
             op -= op * 0.1;
         }, 20);
     }
-
+ 
     */
 
     return (
-        <div>
+        <div>``
             <div className='listContainer'>
                 <ul className='list'>
                     {getUndoneTodos()
                         .filter(todo => !todo.isSub)
                         .map
                         ((todo) =>
-                            <div className='list__itemcontainer' key={uuidv4()}> 
+                            <div className='list__itemcontainer' key={uuidv4()}>
                                 <div className='list__line'  >
                                     <input className='list__checkbox' type="checkbox" onChange={() => { setDone(todo.id) }} />
-                                    <li className='list__text'>
+                                    <li className='list__text' style={{ display: todo.isInputDisplayed ? 'none' : 'flex' }}>
                                         {todo.text}
                                     </li>
+                                    <input
+                                        className='list__editor' style={{ display: todo.isInputDisplayed ? 'flex' : 'none' }}
+                                        placeholder={todo.text}
+                                        defaultValue={todo.text}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') {
+                                                updateTodo(todo.id, e.target.value);
+                                            }
+                                        }}
+                                    />
                                     <div className='list__dropdownmenucontainer'>
                                         <Dropdownmenu
                                             setShowSub={setShowSub}
                                             deleteTodo={deleteTodo}
-                                            id={todo.id} />
+                                            id={todo.id}
+                                            handleInputDisplayed={handleInputDisplayed}
+                                        />
                                     </div>
                                 </div>
                                 <div className='list__sublistcontainer'>
@@ -85,7 +98,8 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
                                             getUndoneTodos={getUndoneTodos}
                                             deleteTodo={deleteTodo}
                                             setDone={setDone}
-                                            setShowSub={setShowSub}
+                                            updateTodo={updateTodo}
+                                            handleInputDisplayed={handleInputDisplayed}
                                         />}
                                 </div>
                             </div>
@@ -95,7 +109,7 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
                     {getDoneTodos()
                         .filter(todo => !todo.isSub)
                         .map((todo) =>
-                            <div className='list__itemcontainer' key={uuidv4()} ref={divRef}>
+                            <div className='list__itemcontainer' key={uuidv4()}>
                                 <div className='list__line'  >
                                     <input className='list__checkbox list__checkbox_done' type="checkbox" onChange={() => { setDone(todo.id) }} checked />
                                     <li className='list__text list__text_done'>
@@ -105,7 +119,9 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
                                         <Dropdownmenu
                                             setShowSub={setShowSub}
                                             deleteTodo={deleteTodo}
-                                            id={todo.id} />
+                                            id={todo.id}
+                                            handleInputDisplayed={handleInputDisplayed}
+                                        />
                                     </div>
                                 </div>
                                 <div className='list__sublistcontainer'>
@@ -117,7 +133,8 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
                                             getUndoneTodos={getUndoneTodos}
                                             deleteTodo={deleteTodo}
                                             setDone={setDone}
-                                            setShowSub={setShowSub}
+                                            updateTodo={updateTodo}
+                                            handleInputDisplayed={handleInputDisplayed}
                                         />}
 
                                 </div>

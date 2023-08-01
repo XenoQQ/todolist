@@ -1,41 +1,54 @@
+.sublist__dropdownmenucontainer {
+    height: 100%;
+}
+
 .subinput {
     display: flex;
-    align-items:center;
-    justify-content: space-between;
     height: 45px;
     margin: 5px 0 5px 0;
+    padding: 5px 0 5px 0;
+
     border-bottom: 1px solid #3B3B3B;
     border-top: 1px solid #3B3B3B;
-    padding: 5px 0 5px 0;
+
+    align-items:center;
+    justify-content: space-between;
 }
 
 .subinput__form {
+    display: flex;
     width: 100%; 
     height: 40px;
-    border: none;
-    background-color: #202020;
-    outline: none;
+    padding-left: 15px;
+
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #DFDFDF;
     font-size: 20px;
-    padding-left: 15px;
-    display: flex;
+    
+    background-color: #202020;
+    border: none;
+    outline: none;
+
     align-items: center;
     justify-content: left;
 }
 
 
 .subinput__button {
-    background-color: #3B3B3B;
+
     width: 45px;
     height: 45px;
+
     border-radius: 5px;
     border: none;
+    background-color: #3B3B3B;
+
     transition: 1s, flex-basis 0.1s;
 }
 
 .subinput__button:hover {
     background-color: #323232;
+
     transition: 0s;
 }
 
@@ -45,66 +58,105 @@
 
 .sublistContainer {
     display: flex;
-    flex-direction: column;
-    margin: 0;
     width: 100%; 
+    margin: 0;
+    padding: 0;
+
+    flex-direction: column;
 }
 
 .sublist {
     width: 100%;
-    padding: 0;
     margin: 0;
+    padding: 0;
+
     align-self: flex-end;
 }
 
 .sublist__line {
     display: flex;
+    height: 45px;
+    margin-bottom: 5px;
+    padding: 0 0 5px 0;
+
+    border: none; 
+    border-bottom: 1px solid #3B3B3B;
+
     justify-content: space-between;
     align-items: center;
-    border: none; 
-    padding: 0 0 5px 0;
-    border-bottom: 1px solid #3B3B3B;
-    margin-bottom: 5px;
-    height: 45px;
 }
 
 .sublist__checkbox {
-    margin: 0 0 0 15px;
     height: 45px;
     width: 45px;
-    color: #3B3B3B;
+    margin: 0 0 0 15px;
+    padding: 0;
 }
 
 .sublist__checkbox_done {
     width: 45px;
     height: 45px;
+    padding: 0;
+
     accent-color: #3B3B3B;
 }
 
 .sublist__text {
     display: flex;
-    align-items: center;
     width: 100%;
     height: 100%;
-    padding-left: 15px;
-    background-color: #202020;
+    margin: 0;
+    padding-left: 18px;
+
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #757575;
     font-size: 25px;
+
+    background-color: #202020;
+
+    list-style: none;
+    align-items: center;
+}
+
+.sublist__text_done {
+    color: #3B3B3B;
+
+    text-decoration: line-through;
+}
+
+.sublist__editor {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-left: 18px;
+
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #DFDFDF;
+    font-size: 25px;
+
+    background-color: #202020;
+    outline: none;
+    border: none;
+
+    align-items: center;
     list-style: none;
 }
 
 .sublist__delete {
+    width: 40px;
+    height: 40px;
+
     background-color: #3B3B3B;
     border-radius: 5px;
     border: none;
+
     transition: 1s, flex-basis 0.1s;
-    width: 40px;
-    height: 40px;
 }
 
 .sublist__delete:hover {
     background-color: #323232;
+
     transition: 0s;
 }
 
@@ -112,11 +164,4 @@
     background-color: #282828;
 }
 
-.sublist__text_done {
-    color: #3B3B3B;
-    text-decoration: line-through;
-}
 
-.sublist__dropdownmenucontainer {
-    height: 100%;
-}

@@ -9,6 +9,7 @@ import Navbar from './navbar';
 const App = () => {
 
   const [todos, setTodos] = useState([]);
+
   const [listStatus, setListStatus] = useState({
     visibleAll: true,
     vivibleDone: false,
@@ -23,23 +24,51 @@ const App = () => {
         text: todo,
         done: false,
         showSub: false,
-        isSub: false
+        isSub: false,
+        isInputDisplayed: false,
       }]);
     }
-  }
+  };
 
-  const addSubTodo = (todo, id) => {
+  const updateTodo = (targetId, newText) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === targetId) {
+        console.log(todo.text);
+        return {
+          ...todo,
+          text: newText,
+          isInputDisplayed: !todo.isInputDisplayed
+        };
+      }
+      return todo;
+    }));
+  };
+
+  const handleInputDisplayed = (targetId) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === targetId) {
+        return {
+          ...todo,
+          isInputDisplayed: !todo.isInputDisplayed
+        };
+      }
+      return todo;
+    }));
+  };
+
+  const addSubTodo = (targetID, todo) => {
     if (todo !== '') {
       setTodos([...todos, {
         id: uuidv4(),
-        parentID: id,
+        parentID: targetID,
         text: todo,
         done: false,
         showSub: false,
-        isSub: true
+        isSub: true,
+        isInputDisplayed: false
       }]);
     }
-    console.log(todos);
+
   }
 
   const setDone = (targetId) => {
@@ -85,16 +114,19 @@ const App = () => {
       <Todoinput
         addTodo={addTodo} />
       <Navbar
+        todos={todos}
         setListStatus={setListStatus}
         deleteDoneTodos={deleteDoneTodos}
-        todos={todos} />
+      />
       <Todolist
         todos={todos}
         deleteTodo={deleteTodo}
         setDone={setDone}
         listStatus={listStatus}
         setShowSub={setShowSub}
-        addSubTodo={addSubTodo} />
+        addSubTodo={addSubTodo}
+        updateTodo={updateTodo}
+        handleInputDisplayed={handleInputDisplayed} />
     </div>
   );
 }

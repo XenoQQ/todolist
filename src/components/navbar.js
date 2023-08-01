@@ -1,22 +1,22 @@
 import './styles/navbar.css';
 
-const Navbar = ({ setListStatus, deleteDoneTodos, todos }) => {
+const Navbar = ({ todos, setListStatus, deleteDoneTodos }) => {
 
     const getUndoneTodos = () => {
         let undoneTodos = todos.filter((todo) => !todo.isSub).filter((todo) => !todo.done).length;
         if (undoneTodos === 0) {
-            return 'No undone todos';
+            return 'No incomplete todos';
         } else {
-            return `Show ${undoneTodos} undone todos`;
+            return `Show ${undoneTodos} incomplete todos`;
         }
     }
 
     const getDoneTodos = () => {
         let doneTodos = todos.filter((todo) => !todo.isSub).filter((todo) => todo.done).length;
         if (doneTodos === 0) {
-            return 'No done todos';
+            return 'No complete todos';
         } else {
-            return `Show ${doneTodos} done todos`;
+            return `Show ${doneTodos} complete todos`;
         }
     }
 
@@ -52,7 +52,7 @@ const Navbar = ({ setListStatus, deleteDoneTodos, todos }) => {
             <button className='navbar__button' onClick={() => {
                 deleteDoneTodos()
             }}>
-                Delete all done
+                Clear completed
             </button>
         </div>
     );

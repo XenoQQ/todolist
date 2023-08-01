@@ -4,38 +4,47 @@ body {
 
 .todoframe {
     position: absolute;
-    display: flex;
-    flex-direction: column;      
     top: 30px;
     left: 50%;
     transform: translate(-50%, 0);
+
+    display: flex;
     width: 600px;
     min-height: 600px;
+    margin: 0;
     padding: 10px;
+     
+    border: none;
     border-radius: 10px;
     background-color: #202020;
+
+    flex-direction: column;     
 }
 
 .todoframe__title {
+    display: flex;
     height: 60px;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 40px;
     color: #757575;
+
+    align-items: center;
+    justify-content: center;
 }
 
 .todoframe__subtitle {
+    display: flex;
     height: 25px;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 15px;
     color: #757575;
+
+    align-items: center;
+    justify-content: center;
 }

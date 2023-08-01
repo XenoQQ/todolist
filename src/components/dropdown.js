@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import './styles/dropdown.css';
 
-const Dropdownmenu = ({ setShowSub, deleteTodo, id, isSub }) => {
+const Dropdownmenu = ({ setShowSub, deleteTodo, id, isSub, handleInputDisplayed }) => {
 
     const [open, setOpen] = useState(false);
 
@@ -55,7 +55,7 @@ const Dropdownmenu = ({ setShowSub, deleteTodo, id, isSub }) => {
                     <button className='dropdownmenu__button' onClick={() => { setShowSub(id) }}>
                         Show sub
                     </button>}
-                <button className='dropdownmenu__button' onClick={() => { }}>
+                <button className='dropdownmenu__button' onClick={() => { handleInputDisplayed(id) }}>
                     Redact
                 </button>
                 <button className='dropdownmenu__button' onClick={() => { deleteTodo(id); }}>

@@ -2,6 +2,7 @@ import './styles/todoinput.css';
 import { useState } from 'react';
 
 const Todoinput = ({ addTodo }) => {
+
     const [currentText, setCurrentText] = useState('');
 
     return (
@@ -11,8 +12,17 @@ const Todoinput = ({ addTodo }) => {
                 placeholder='Got any plans? Write here!'
                 value={currentText}
                 onChange={(e) => { setCurrentText(e.target.value) }}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        addTodo(currentText, '');
+                        setCurrentText('');
+                    }
+                }}
             />
-            <button className='input__button' onClick={() => { addTodo(currentText, ''); setCurrentText('') }} />
+            <button
+                className='input__button'
+                onClick={() => { addTodo(currentText, ''); setCurrentText('') }}
+            />
         </div>
     )
 }
