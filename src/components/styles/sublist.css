@@ -1,6 +1,5 @@
 .sublist__dropdownmenucontainer {
     height: 100%;
-    
 }
 
 .subinput {
@@ -71,7 +70,7 @@
 
 .sublist {
     width: 100%;
-    margin: 5px 0 0 0;
+    margin: 5px 0 -5px 0;
     padding: 5px 0 0 0;
 
     border-top: 1px solid #3B3B3B;
@@ -82,7 +81,7 @@
 .sublist__line {
     display: flex;
     height: 45px;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
     padding: 0 0 5px 5px;
 
     border: none; 
