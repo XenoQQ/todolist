@@ -27,6 +27,9 @@
 
   justify-content: space-between;
   flex-direction: column;
+  
+  transition: 1s, flex-basis 0.1s;
+  
 }
 
 .list__line {

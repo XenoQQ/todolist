@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Sublist from './sublist';
 import Dropdownmenu from './dropdown';
 import Updateinput from './updateinput';
-import { useEffect, useRef, useState } from 'react';
 import imgCheckedGrey from '../assets/icon-checked-grey.png';
 
 const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTodo, updateTodo, handleInputDisplayed, handleSubInputDisplayed }) => {
@@ -20,46 +19,8 @@ const Todolist = ({ todos, setDone, deleteTodo, listStatus, setShowSub, addSubTo
         } else return [];
     };
 
-
-
-    /*const divRef = useRef(null);
-
-    useEffect(() => {
-        const divElement = divRef.current;
-        Unfade(divElement);
-    })
-  */
-
-    const Unfade = (element) => {
-        var op = 0.1;
-        element.style.display = 'flex';
-        var timer = setInterval(function () {
-            if (op >= 1) {
-                clearInterval(timer);
-            }
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-            op += op * 0.1;
-        }, 20);
-    }
-
-    /* const Fade = (element) => {
-        var op = 1;
-        var timer = setInterval(function () {
-            if (op <= 0.1) {
-                clearInterval(timer);
-                element.style.display = 'none';
-            }
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-            op -= op * 0.1;
-        }, 20);
-    }
- 
-    */
-
     return (
-        <div>``
+        <div>
             <div className='listContainer'>
                 <ul className='list'>
                     {getUndoneTodos()
