@@ -1,5 +1,6 @@
 import './styles/todoinput.css';
 import { useState } from 'react';
+import imgStart from '../assets/icon-start.png';
 
 const Todoinput = ({ addTodo }) => {
 
@@ -22,7 +23,9 @@ const Todoinput = ({ addTodo }) => {
             <button
                 className='input__button'
                 onClick={() => { addTodo(currentText, ''); setCurrentText('') }}
-            />
+            >
+                <img src={imgStart} width='35px' height='35px'></img>
+            </button>
         </div>
     )
 }

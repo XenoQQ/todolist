@@ -2,14 +2,22 @@ import './styles/sublist.css';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Dropdownmenu from './dropdown';
+import Updateinput from './updateinput';
+import imgStart from '../assets/icon-start.png';
+import imgCheckedGrey from '../assets/icon-checked-grey.png';
+import imgX from '../assets/icon-x.png';
 
 
-const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTodo, setDone, updateTodo, handleInputDisplayed }) => {
+const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTodo, setDone, updateTodo, handleInputDisplayed, handleSubInputDisplayed, todo }) => {
+
     const [currentText, setCurrentText] = useState('');
+
+
 
     return (
         <div className='sublistContainer'>
-            <div className='subinput'>
+            <div className='subinput'
+                style={{ display: todo.isSubInputDisplayed ? 'flex' : 'none' }}>
                 <input
                     className='subinput__form'
                     placeholder='Type here more todos, lmao'
@@ -17,9 +25,12 @@ const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTod
                     onChange={(e) => { setCurrentText(e.target.value) }}
                     onKeyDown={(e) => { e.key === 'Enter' && addSubTodo(parentID, currentText); e.key === 'Enter' && setCurrentText('') }}
                 />
-                <div className='sublist__dropdownmenucontainer'>
-                    <button className='subinput__button' onClick={() => { addSubTodo(parentID, currentText); setCurrentText('') }} />
-                </div>
+                <button className='subinput__button' onClick={() => { addSubTodo(parentID, currentText); setCurrentText('') }} >
+                    <img src={imgStart} width='35px' height='35px' alt='Start' />
+                </button>
+                <button className='subinput__button' onClick={() => { handleSubInputDisplayed(todo.id) }} >
+                    <img src={imgX} width='60px' height='60px' alt='X' />
+                </button>
             </div>
             <ul className='sublist'>
                 {getUndoneTodos()
@@ -27,19 +38,25 @@ const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTod
                     .filter((todo) => todo.parentID === parentID)
                     .map((todo) =>
                         <div className='sublist__line' key={uuidv4()} >
-                            <input className='sublist__checkbox' type="checkbox" onChange={() => { setDone(todo.id) }} />
-                            <li className='sublist__text' style={{ display: todo.isInputDisplayed ? 'none' : 'flex' }}>
+                            <label className='sublist__custom-checkbox'>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => { setDone(todo.id) }}
+                                />
+                                <span className='sublist__checkmark'>
+                                    <img src={imgCheckedGrey} className='sublist__checkmark_mark' alt='Done todo' />
+                                </span>
+                            </label>
+                            <li
+                                className='sublist__text'
+                                style={{ display: todo.isInputDisplayed ? 'none' : 'flex' }}
+                            >
                                 {todo.text}
                             </li>
-                            <input
-                                className='sublist__editor' style={{ display: todo.isInputDisplayed ? 'flex' : 'none' }}
-                                placeholder={todo.text}
-                                defaultValue={todo.text}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter') {
-                                        updateTodo(todo.id, e.target.value);
-                                    }
-                                }}
+                            <Updateinput
+                                updateTodo={updateTodo}
+                                todo={todo}
+                                handleInputDisplayed={handleInputDisplayed}
                             />
                             <div className='sublist__dropdownmenucontainer'>
                                 <Dropdownmenu
@@ -47,8 +64,8 @@ const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTod
                                     id={todo.id}
                                     isSub={true}
                                     handleInputDisplayed={handleInputDisplayed}
+                                    todo={todo}
                                 />
-
                             </div>
                         </div>
                     )}
@@ -59,27 +76,35 @@ const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTod
                     .filter((todo) => todo.parentID === parentID)
                     .map((todo) =>
                         <div className='sublist__line' key={uuidv4()} >
-                            <input className='sublist__checkbox sublist__checkbox_done' type="checkbox" onChange={() => { setDone(todo.id) }} checked />
-                            <li className='sublist__text sublist__text_done' style={{ display: todo.isInputDisplayed ? 'none' : 'flex' }}>
+                            <label className='sublist__custom-checkbox'>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => { setDone(todo.id) }}
+                                    checked
+                                />
+                                <span className='sublist__checkmark'>
+                                    <img src={imgCheckedGrey} className='sublist__checkmark_mark' alt='Done todo' />
+                                </span>
+                            </label>
+                            <li
+                                className='sublist__text sublist__text_done'
+                                style={{ display: todo.isInputDisplayed ? 'none' : 'flex' }}
+                            >
                                 {todo.text}
                             </li>
-                            <input
-                                className='sublist__editor' style={{ display: todo.isInputDisplayed ? 'flex' : 'none' }}
-                                placeholder={todo.text}
-                                defaultValue={todo.text}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter') {
-                                        updateTodo(todo.id, e.target.value);
-                                    }
-                                }}
+                            <Updateinput
+                                updateTodo={updateTodo}
+                                todo={todo}
+                                handleInputDisplayed={handleInputDisplayed}
                             />
                             <div className='list__dropdownmenucontainer'>
                                 <Dropdownmenu
                                     deleteTodo={deleteTodo}
                                     id={todo.id}
-                                    isSub={true} 
+                                    isSub={true}
                                     handleInputDisplayed={handleInputDisplayed}
-                                    />
+                                    todo={todo}
+                                />
 
                             </div>
                         </div>

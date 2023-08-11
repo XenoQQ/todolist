@@ -26,6 +26,7 @@ const App = () => {
         showSub: false,
         isSub: false,
         isInputDisplayed: false,
+        isSubInputDisplayed: false,
       }]);
     }
   };
@@ -50,6 +51,18 @@ const App = () => {
         return {
           ...todo,
           isInputDisplayed: !todo.isInputDisplayed
+        };
+      }
+      return todo;
+    }));
+  };
+
+  const handleSubInputDisplayed = (targetId) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === targetId) {
+        return {
+          ...todo,
+          isSubInputDisplayed: !todo.isSubInputDisplayed
         };
       }
       return todo;
@@ -126,7 +139,8 @@ const App = () => {
         setShowSub={setShowSub}
         addSubTodo={addSubTodo}
         updateTodo={updateTodo}
-        handleInputDisplayed={handleInputDisplayed} />
+        handleInputDisplayed={handleInputDisplayed} 
+        handleSubInputDisplayed={handleSubInputDisplayed}/>
     </div>
   );
 }

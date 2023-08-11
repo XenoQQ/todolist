@@ -1,13 +1,23 @@
 import { useRef, useState, useEffect } from 'react';
 import './styles/dropdown.css';
+import imgMenu from '../assets/icon-menu.png';
+import imgX from '../assets/icon-x.png';
+import imgGarbage from '../assets/icon-garbage.png';
+import imgEdit from '../assets/icon-edit.png';
+import imgShow from '../assets/icon-show.png';
+import imgAdd from '../assets/icon-add.png';
 
-const Dropdownmenu = ({ setShowSub, deleteTodo, id, isSub, handleInputDisplayed }) => {
+const Dropdownmenu = ({ setShowSub, deleteTodo, id, isSub, handleInputDisplayed, handleSubInputDisplayed, todo}) => {
 
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
         setOpen(!open);
     };
+
+    const menuButtonImg = () => {
+        return todo.isInputDisplayed ? <img src={imgX} width='60px' height='60px' /> : <img src={imgMenu} width='35px' height='35px' />;
+    }
 
     const divRef = useRef(null);
 
@@ -48,18 +58,29 @@ const Dropdownmenu = ({ setShowSub, deleteTodo, id, isSub, handleInputDisplayed 
 
     return (
         <div className='dropdownmenuContainer'>
-            <button className='dropdownmenu__button dropdownmenu__button_main' onClick={() => { handleOpen() }}>
+            <button
+                className='dropdownmenu__button dropdownmenu__button_main'
+                onClick={() => { todo.isInputDisplayed ? handleInputDisplayed(id) : handleOpen() }}
+            >
+                {menuButtonImg()}
             </button>
             <div className='dropdownmenu' ref={divRef}>
-                {(!isSub) &&
-                    <button className='dropdownmenu__button' onClick={() => { setShowSub(id) }}>
-                        Show sub
-                    </button>}
                 <button className='dropdownmenu__button' onClick={() => { handleInputDisplayed(id) }}>
-                    Redact
+                    <img src={imgEdit} width='30px' height='30px' />
                 </button>
+
+                {(!isSub) &&
+                    <>
+                        <button className='dropdownmenu__button' onClick={() => { handleSubInputDisplayed(id) }}>
+                            <img src={imgAdd} width='32px' height='32px' />
+                        </button>
+                        <button className='dropdownmenu__button' onClick={() => { setShowSub(id) }}>
+                            <img src={imgShow} width='30px' height='30px' />
+                        </button>
+
+                    </>}
                 <button className='dropdownmenu__button' onClick={() => { deleteTodo(id); }}>
-                    Delete
+                    <img src={imgGarbage} width='30px' height='30px' />
                 </button>
             </div>
         </div>
