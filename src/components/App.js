@@ -10,15 +10,32 @@ const App = () => {
 
   const [todos, setTodos] = useState([]);
 
+  const [lastUpdatedTodoID, setLastUpdatedTodoID] = useState('');
+
+  const handleLastUpdatedTodoID = (targetID) => {
+    setLastUpdatedTodoID(targetID);
+    setTimeout(() => {
+      setLastUpdatedTodoID('');
+    }, 500);
+  }
+
   const [listStatus, setListStatus] = useState({
     visibleAll: true,
     vivibleDone: false,
     visibleUndone: false,
+    fadeStatus: '',
   });
+
+  const handleListStatus = (newStatus) => {
+    setListStatus(status => ({ ...status, fadeStatus: 'fade' }))
+    setTimeout(() => {
+      setListStatus(() => ({ ...newStatus, fadeStatus: 'unfade' }))
+    }, 500)
+  };
 
   const addTodo = (todo) => {
     if (todo !== '') {
-      setTodos([...todos, {
+      const newTodo = {
         id: uuidv4(),
         parentID: '',
         text: todo,
@@ -27,14 +44,16 @@ const App = () => {
         isSub: false,
         isInputDisplayed: false,
         isSubInputDisplayed: false,
-      }]);
+        deleteStatus: ''
+      };
+      setTodos([...todos, newTodo]);
+      handleLastUpdatedTodoID(newTodo.id);
     }
   };
 
   const updateTodo = (targetId, newText) => {
     setTodos(todos.map(todo => {
       if (todo.id === targetId) {
-        console.log(todo.text);
         return {
           ...todo,
           text: newText,
@@ -81,17 +100,17 @@ const App = () => {
         isInputDisplayed: false
       }]);
     }
-
   }
 
   const setDone = (targetId) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === targetId) {
+        handleLastUpdatedTodoID(todo.id);
         return { ...todo, done: !todo.done }
       }
       return todo;
-    })
 
+    })
     setTodos(updatedTodos);
   }
 
@@ -107,17 +126,41 @@ const App = () => {
   }
 
   const deleteTodo = (targetId) => {
+
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === targetId) {
+        return { ...todo, deleteStatus: 'onDelete' }
+      }
+      return todo;
+    })
+
+    setTodos(updatedTodos);
+
     const newTodos = todos.filter((todo) => {
       return todo.id !== targetId;
     });
-    setTodos(newTodos);
+    setTimeout(() => {
+      setTodos(newTodos);
+    }, 500);
   }
 
   const deleteDoneTodos = () => {
+
+    const updatedTodos = todos.map((todo) => {
+      if (todo.done) {
+        return { ...todo, deleteStatus: 'onDelete' }
+      }
+      return todo;
+    })
+
+    setTodos(updatedTodos);
+
     const newTodos = todos.filter((todo) => {
       return todo = !todo.done;
     });
-    setTodos(newTodos);
+    setTimeout(() => {
+      setTodos(newTodos);
+    }, 500);
   }
 
   return (
@@ -130,6 +173,7 @@ const App = () => {
         todos={todos}
         setListStatus={setListStatus}
         deleteDoneTodos={deleteDoneTodos}
+        handleListStatus={handleListStatus}
       />
       <Todolist
         todos={todos}
@@ -139,8 +183,9 @@ const App = () => {
         setShowSub={setShowSub}
         addSubTodo={addSubTodo}
         updateTodo={updateTodo}
-        handleInputDisplayed={handleInputDisplayed} 
-        handleSubInputDisplayed={handleSubInputDisplayed}/>
+        handleInputDisplayed={handleInputDisplayed}
+        handleSubInputDisplayed={handleSubInputDisplayed}
+        lastUpdatedTodoID={lastUpdatedTodoID} />
     </div>
   );
 }

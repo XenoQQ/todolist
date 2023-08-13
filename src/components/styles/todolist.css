@@ -12,10 +12,6 @@
   padding: 0;
 }
 
-.list__itemcontainer:last-of-type {
-  animation: unfade 1s;
-}
-
 .list__itemcontainer {
   display: flex;
   min-height: 45px;

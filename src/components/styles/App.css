@@ -52,3 +52,32 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+
+.unfade {
+    animation: unfade 0.5s;
+}
+
+@keyframes unfade {
+    0% {
+        opacity: 0;
+    }
+  
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade {
+    animation: fade 0.5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+  
+    100% {
+        opacity: 0;
+    }
+}

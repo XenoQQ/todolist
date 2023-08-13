@@ -8,7 +8,7 @@ import imgCheckedGrey from '../assets/icon-checked-grey.png';
 import imgX from '../assets/icon-x.png';
 
 
-const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTodo, setDone, updateTodo, handleInputDisplayed, handleSubInputDisplayed, todo }) => {
+const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTodo, setDone, updateTodo, handleInputDisplayed, handleSubInputDisplayed, todo, lastUpdatedTodoID }) => {
 
     const [currentText, setCurrentText] = useState('');
 
@@ -37,7 +37,7 @@ const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTod
                     .filter(todo => todo.isSub)
                     .filter((todo) => todo.parentID === parentID)
                     .map((todo) =>
-                        <div className='sublist__line' key={uuidv4()} >
+                        <div className={`sublist__line + ${todo.id === lastUpdatedTodoID ? 'unfade' : ''}`} key={uuidv4()} >
                             <label className='sublist__custom-checkbox'>
                                 <input
                                     type="checkbox"
@@ -70,12 +70,12 @@ const Sublist = ({ addSubTodo, parentID, getDoneTodos, getUndoneTodos, deleteTod
                         </div>
                     )}
             </ul>
-            <ul className='list'>
+            <ul className='sublistContainer sublistContainer_done'>
                 {getDoneTodos()
                     .filter(todo => todo.isSub)
                     .filter((todo) => todo.parentID === parentID)
                     .map((todo) =>
-                        <div className='sublist__line' key={uuidv4()} >
+                        <div className={`sublist__line + ${todo.id === lastUpdatedTodoID ? 'unfade' : ''}`} key={uuidv4()} >
                             <label className='sublist__custom-checkbox'>
                                 <input
                                     type="checkbox"
